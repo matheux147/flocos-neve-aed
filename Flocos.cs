@@ -32,6 +32,7 @@ public static class Flocos
 
     /// <summary>
     /// Retorna True se o floco b for alguma das 6 rotações possíveis do floco a.
+    /// Executa em tempo constante O(1), pois o floco tem tamanho fixo (6 pontas).
     /// </summary>
     public static bool SaoGemeos(int[] a, int[] b)
     {
@@ -58,14 +59,18 @@ public static class Flocos
 
     /// <summary>
     /// Solução ingênua: compara todos os pares (i, j) da lista.
+    /// Complexidade O(N²): causada pelos dois laços aninhados que comparam todos os pares.
     /// </summary>
     public static (int, int)? ExisteParGemeoIngenuo(List<int[]> flocos)
     {
         int n = flocos.Count;
+
+        // Dois laços aninhados percorrem todos os pares possíveis -> O(N²)
         for (int i = 0; i < n; i++)
         {
             for (int j = i + 1; j < n; j++)
             {
+                // A verificação SaoGemeos é O(1) devido ao tamanho fixo do floco
                 if (SaoGemeos(flocos[i], flocos[j]))
                 {
                     return (i, j);
@@ -111,17 +116,20 @@ public static class Flocos
 
     /// <summary>
     /// Solução com tabela hash usando dicionário para guardar as chaves já vistas.
+    /// Complexidade O(N): causada pelo laço único que percorre os N flocos com busca O(1).
     /// </summary>
     public static (int, int)? ExisteParGemeoHash(List<int[]> flocos)
     {
         // Guarda a chave canônica (tupla) de cada floco e seu respectivo índice
         var visto = new Dictionary<(int, int, int, int, int, int), int>();
 
+        // Laço único percorre os N flocos uma só vez -> O(N)
         for (int j = 0; j < flocos.Count; j++)
         {
             var chave = ChaveCanonica(flocos[j]);
 
-            // Se a chave já apareceu antes, encontramos o par gêmeo
+            // Se a chave já apareceu antes, então encontramos o par gêmeo
+            // Busca e inserção no dicionário custam O(1) em média
             if (visto.TryGetValue(chave, out int i))
             {
                 return (i, j);
