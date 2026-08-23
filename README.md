@@ -4,7 +4,7 @@ Este projeto é uma implementação em C# da **Atividade 4** da disciplina de **
 
 ---
 
-## Pré-requisitos (Para quem não tem o ambiente configurado)
+## Pré-requisitos para rodar o projeto
 
 Para compilar e rodar este projeto, é necessário ter o **.NET SDK** instalado no seu computador.
 
@@ -119,8 +119,6 @@ flocos-neve-aed/
 ├── Flocos.cs                         # Métodos centrais (LeInstancia, SaoGemeos, ChaveCanonica, Soluções e Benchmark)
 ├── Program.cs                        # Ponto de entrada (orquestra medições, tabela, gráfico e perguntas)
 ├── README.md                         # Este documento de instruções e relatório
-├── ativ4.md                          # Enunciado oficial da atividade
-├── flocos_estudo.md                  # Material complementar de estudos
 ├── flocos-neve-aed.csproj            # Configuração do projeto .NET e dependências NuGet (ScottPlot)
 ├── output/
 │   └── grafico_comparativo.png       # Gráfico comparativo gerado automaticamente
